@@ -16,7 +16,7 @@ export default function InsightsPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="min-h-screen pt-16">
+      <main id="main-content" className="min-h-screen pt-24">
         <section className="section-padding">
           <Container>
             <SectionTitle

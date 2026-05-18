@@ -15,7 +15,7 @@ export default function MapPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="flex min-h-screen flex-col pt-16">
+      <main id="main-content" className="flex min-h-screen flex-col pt-24">
         <div className="flex flex-1 flex-col">
           <div className="border-b border-border bg-card px-4 py-4 sm:px-6 lg:px-8">
             <SectionTitle

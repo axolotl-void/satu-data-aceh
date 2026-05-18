@@ -110,10 +110,10 @@ export const FEATURED_DATASETS: Dataset[] = [
 ];
 
 export const NAV_ITEMS = [
-  { label: "Beranda", href: "/" },
-  { label: "Dataset", href: "/dataset" },
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "Peta", href: "/map" },
-  { label: "Wawasan", href: "/insights" },
-  { label: "Instansi", href: "/institutions" },
+  { label: "Beranda",       href: "/"            },
+  { label: "Dataset",       href: "/dataset"     },
+  { label: "Visualisasi",   href: "/dashboard"   },
+  { label: "Geospasial",    href: "/map"         },
+  { label: "Produsen Data", href: "/institutions"},
+  { label: "Insight",       href: "/insights"    },
 ];
