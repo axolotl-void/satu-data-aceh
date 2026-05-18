@@ -5,15 +5,6 @@ import { Eye, Target } from "lucide-react";
 import { useState } from "react";
 import { Container } from "@/components/layout/container";
 
-/**
- * Vision & Mission Section — Visi & Misi Satu Data Aceh
- * Tab-based layout: Visi | Misi
- * Mendukung light mode & dark mode.
- */
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-/** 4 pilar visi — ditampilkan sebagai kata kunci besar bergradasi */
 const VISI_PILLARS = [
   { word: "Islami",        delay: 0.1  },
   { word: "Maju",          delay: 0.25 },
@@ -31,7 +22,6 @@ const MISI: string[] = [
   "Mengembangkan SDM yang berkompeten dalam penyelenggaraan Data dan Informasi Aceh.",
 ];
 
-// ─── Animation variants ───────────────────────────────────────────────────────
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -65,7 +55,6 @@ const visiVariants: Variants = {
   },
 };
 
-/** Animasi per-pilar: slide dari bawah + blur */
 const pillarVariants: Variants = {
   hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
   visible: {
@@ -76,7 +65,6 @@ const pillarVariants: Variants = {
   },
 };
 
-/** Container stagger untuk pilar */
 const pillarContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -271,7 +259,7 @@ export default function VisionMissionSection() {
           >
             <div
               className="
-                relative overflow-hidden rounded-3xl px-8 py-12 md:px-16 md:py-16 text-center
+                relative overflow-hidden rounded-3xl px-5 py-10 md:px-16 md:py-16 text-center
                 border border-[#8B1E1E]/20 bg-white/90 shadow-xl
                 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur-md
               "
@@ -330,7 +318,8 @@ export default function VisionMissionSection() {
                     {/* Kata kunci utama */}
                     <span
                       className="
-                        block text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl
+                        block text-3xl font-extrabold tracking-tight md:text-5xl lg:text-6xl
+                        break-words
                         bg-gradient-to-br from-[#8B1E1E] via-[#C0392B] to-[#8B1E1E]
                         bg-clip-text text-transparent
                         dark:from-amber-300 dark:via-yellow-200 dark:to-amber-400

@@ -99,11 +99,11 @@ const scrollIndicatorVariants: Variants = {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { icon: Database,    value: 8917, label: "Dataset"                   },
-  { icon: PieChart,    value: 101,  label: "Infografik"                },
-  { icon: FileText,    value: 53,   label: "Artikel"                   },
-  { icon: PlayCircle,  value: 21,   label: "VideoGrafis"               },
-  { icon: BookOpen,    value: 18,   label: "Kertas Kerja Kebijakan"    },
+  { icon: Database,    value: 8917, label: "Dataset",                  labelMobile: "Dataset"     },
+  { icon: PieChart,    value: 101,  label: "Infografik",               labelMobile: "Infografik"  },
+  { icon: FileText,    value: 53,   label: "Artikel",                  labelMobile: "Artikel"     },
+  { icon: PlayCircle,  value: 21,   label: "VideoGrafis",              labelMobile: "Video"       },
+  { icon: BookOpen,    value: 18,   label: "Kertas Kerja Kebijakan",   labelMobile: "Kebijakan"   },
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -300,10 +300,10 @@ function HUDSearch() {
           <input
             ref={inputRef}
             type="search"
-            placeholder="Cari data, instansi, sektoral, atau topik di sini..."
+            placeholder="Cari data, instansi, atau topik..."
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="h-14 flex-1 bg-transparent text-sm text-white/90 placeholder:text-white/35 focus:outline-none"
+            className="h-14 flex-1 min-w-0 bg-transparent text-sm text-white/90 placeholder:text-white/35 focus:outline-none"
             aria-label="Cari dataset Satu Data Aceh"
           />
 
@@ -404,10 +404,12 @@ function StatCard({
   icon: Icon,
   value,
   label,
+  labelMobile,
 }: {
   icon: React.ElementType;
   value: number;
   label: string;
+  labelMobile: string;
 }) {
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -455,7 +457,8 @@ function StatCard({
 
       {/* Label */}
       <p className="text-[9px] font-medium leading-tight text-zinc-300 md:text-xs md:mt-1">
-        {label}
+        <span className="sm:hidden">{labelMobile}</span>
+        <span className="hidden sm:inline">{label}</span>
       </p>
     </motion.div>
   );
@@ -494,7 +497,7 @@ export default function HeroSection() {
 
       {/* ── Layer 2: Stagger container ── */}
       <motion.div
-        className="relative z-20 mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-4 pb-24 pt-28 text-center sm:gap-8 sm:px-6 sm:pb-32 sm:pt-36 lg:px-8 lg:pt-40"
+        className="relative z-20 mx-auto flex w-full max-w-5xl flex-col items-center gap-5 px-4 pb-20 pt-24 text-center sm:gap-8 sm:px-6 sm:pb-32 sm:pt-36 lg:px-8 lg:pt-40"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -584,9 +587,9 @@ export default function HeroSection() {
             aria-hidden="true"
           />
 
-          {/* Stat cards — 5 items always in one row */}
+          {/* Stat cards — 3 cols on mobile, 5 on sm+ */}
           <motion.div
-            className="mx-auto flex w-full max-w-4xl flex-row gap-2 md:gap-3"
+            className="mx-auto grid w-full max-w-4xl grid-cols-3 gap-2 sm:grid-cols-5 md:gap-3"
             variants={statContainerVariants}
           >
             {STATS.map((stat) => (
@@ -595,6 +598,7 @@ export default function HeroSection() {
                 icon={stat.icon}
                 value={stat.value}
                 label={stat.label}
+                labelMobile={stat.labelMobile}
               />
             ))}
           </motion.div>

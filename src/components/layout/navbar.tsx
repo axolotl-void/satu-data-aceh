@@ -525,7 +525,7 @@ export function Navbar() {
           side="right"
           showCloseButton={false}
           className={cn(
-            "flex w-[300px] flex-col border-l border-amber-500/20 p-0",
+            "flex w-[min(300px,90vw)] flex-col border-l border-amber-500/20 p-0",
             "bg-[#1A0509] text-white"
           )}
         >
