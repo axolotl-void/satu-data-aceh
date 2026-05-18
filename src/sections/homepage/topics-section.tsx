@@ -109,7 +109,7 @@ export default function TopicsSection() {
       {/* ── Top batik divider — 2 images side by side, fixed height ── */}
       <motion.div
         className="flex w-full overflow-hidden"
-        style={{ height: "74px" }}
+        style={{ height: "104px" }}
         variants={dividerVariants}
         initial="hidden"
         whileInView="visible"
@@ -133,7 +133,7 @@ export default function TopicsSection() {
       </motion.div>
 
       {/* ── Main content ── */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 md:py-16 lg:px-8 lg:py-24">
 
         {/* Section heading */}
         <motion.div
@@ -199,7 +199,7 @@ export default function TopicsSection() {
 
         {/* Cards grid */}
         <motion.div
-          className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6 lg:gap-5"
+          className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-6 lg:gap-5"
           role="list"
           aria-label="Kategori topik data"
           variants={gridVariants}
@@ -218,7 +218,7 @@ export default function TopicsSection() {
                 <Link
                   href={topic.href}
                   aria-label={`Topik ${topic.title}`}
-                  className="group relative flex flex-col items-center justify-center rounded-2xl p-6 text-center outline-none transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/50 focus-visible:ring-2 focus-visible:ring-amber-400"
+                  className="group relative flex flex-col items-center justify-center rounded-2xl p-4 text-center outline-none transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/50 focus-visible:ring-2 focus-visible:ring-amber-400 md:p-6"
                   style={{
                     background: "rgba(255,255,255,0.05)",
                     backdropFilter: "blur(12px)",
@@ -238,7 +238,7 @@ export default function TopicsSection() {
 
                   {/* Icon */}
                   <div
-                    className="relative mb-3 flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
+                    className="relative mb-2 flex h-9 w-9 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 md:mb-3 md:h-12 md:w-12"
                     style={{
                       background: `${topic.accent}18`,
                       border: `1px solid ${topic.accent}30`,
@@ -301,7 +301,7 @@ export default function TopicsSection() {
       {/* ── Bottom batik divider — 2 images side by side, fixed height ── */}
       <motion.div
         className="flex w-full overflow-hidden"
-        style={{ height: "74px" }}
+        style={{ height: "104px" }}
         variants={dividerVariants}
         initial="hidden"
         whileInView="visible"

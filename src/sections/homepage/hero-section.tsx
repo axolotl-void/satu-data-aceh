@@ -7,7 +7,7 @@ import {
 } from "framer-motion";
 import {
   Search, ArrowRight,
-  Database, LayoutDashboard, ImageIcon,
+  Database, PieChart, FileText, PlayCircle, BookOpen,
 } from "lucide-react";
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
@@ -99,9 +99,11 @@ const scrollIndicatorVariants: Variants = {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { icon: Database,         value: 3587, label: "Dataset"   },
-  { icon: LayoutDashboard,  value: 4,    label: "Dashboard" },
-  { icon: ImageIcon,        value: 0,    label: "Infografis"},
+  { icon: Database,    value: 8917, label: "Dataset"                   },
+  { icon: PieChart,    value: 101,  label: "Infografik"                },
+  { icon: FileText,    value: 53,   label: "Artikel"                   },
+  { icon: PlayCircle,  value: 21,   label: "VideoGrafis"               },
+  { icon: BookOpen,    value: 18,   label: "Kertas Kerja Kebijakan"    },
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -235,7 +237,7 @@ function BatikFrame() {
            motion.img inside handles only x/y/opacity animation.          */
         <div
           key={key}
-          className={`pointer-events-none absolute z-[15] w-24 select-none md:w-32 lg:w-44 ${pos}`}
+          className={`pointer-events-none absolute z-[15] w-14 select-none sm:w-20 md:w-32 lg:w-44 ${pos}`}
           style={{ transform: flip }}
           aria-hidden="true"
         >
@@ -381,7 +383,7 @@ function AnimatedNumber({
     }
 
     const controls = motionAnimate(motionVal, value, {
-      duration: 2,
+      duration: 2.5,
       ease: "easeOut",
     });
 
@@ -427,45 +429,32 @@ function StatCard({
     <motion.div
       ref={ref}
       variants={statVariants}
-      className="group relative flex flex-col items-center gap-3 rounded-xl p-5 text-center transition-all duration-300 sm:items-start sm:text-left"
+      className="group relative flex flex-1 flex-col items-center justify-center gap-1.5 rounded-2xl p-3 text-center transition-all duration-300 md:gap-2 md:p-5"
       style={{
-        background: "rgba(255,255,255,0.04)",
+        background: "rgba(255,255,255,0.05)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.10)",
       }}
       whileHover={{
-        borderColor: "rgba(245,158,11,0.45)",
-        boxShadow: "0 0 20px rgba(245,158,11,0.12), 0 4px 24px rgba(0,0,0,0.3)",
+        y: -4,
+        borderColor: "rgba(245,158,11,0.5)",
+        boxShadow: "0 0 30px rgba(245,158,11,0.15), 0 8px 32px rgba(0,0,0,0.3)",
       }}
       transition={{ duration: 0.2 }}
     >
-      {/* Icon badge */}
-      <div
-        className="flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110"
-        style={{
-          background: "rgba(245,158,11,0.12)",
-          border: "1px solid rgba(245,158,11,0.22)",
-        }}
-      >
-        <Icon className="h-4 w-4 text-amber-400/80" />
-      </div>
+      {/* Icon */}
+      <Icon
+        className="h-4 w-4 text-zinc-300 transition-all duration-300 group-hover:scale-110 group-hover:text-amber-400 md:h-5 md:w-5"
+      />
 
       {/* Counting number */}
-      <p
-        className="text-3xl font-bold leading-none tracking-tight lg:text-4xl"
-        style={{
-          background: "linear-gradient(135deg, #FFFFFF 30%, #FDE68A 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}
-      >
+      <p className="text-xl font-bold leading-none tracking-tight text-white transition-colors duration-300 group-hover:text-amber-400 drop-shadow-md md:text-3xl lg:text-4xl">
         <AnimatedNumber value={value} inView={inView} />
       </p>
 
       {/* Label */}
-      <p className="text-xs font-medium leading-snug text-white/50">
+      <p className="text-[9px] font-medium leading-tight text-zinc-300 md:text-xs md:mt-1">
         {label}
       </p>
     </motion.div>
@@ -505,7 +494,7 @@ export default function HeroSection() {
 
       {/* ── Layer 2: Stagger container ── */}
       <motion.div
-        className="relative z-20 mx-auto flex w-full max-w-5xl flex-col items-center gap-8 px-4 pb-32 pt-36 text-center sm:px-6 lg:px-8 lg:pt-40"
+        className="relative z-20 mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-4 pb-24 pt-28 text-center sm:gap-8 sm:px-6 sm:pb-32 sm:pt-36 lg:px-8 lg:pt-40"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -538,7 +527,7 @@ export default function HeroSection() {
         >
           <h1
             id="hero-heading"
-            className="text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px]"
+            className="text-4xl font-black tracking-tight sm:text-5xl md:text-7xl lg:text-8xl xl:text-[96px]"
             style={{
               background:
                 "linear-gradient(160deg, #FFFFFF 0%, #FFFFFF 45%, #FDE68A 75%, #F59E0B 100%)",
@@ -595,9 +584,9 @@ export default function HeroSection() {
             aria-hidden="true"
           />
 
-          {/* Stat cards — own stagger sub-container */}
+          {/* Stat cards — 5 items always in one row */}
           <motion.div
-            className="mx-auto grid max-w-2xl grid-cols-3 gap-3"
+            className="mx-auto flex w-full max-w-4xl flex-row gap-2 md:gap-3"
             variants={statContainerVariants}
           >
             {STATS.map((stat) => (

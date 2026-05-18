@@ -32,30 +32,43 @@ type NavItem =
   | { label: string; href: string; external?: boolean; children?: never }
   | { label: string; href?: never; external?: never; children: { label: string; href: string }[] };
 
+
+
 const GEOSPASIAL_URL =
   "https://geoportal.acehprov.go.id/portal/apps/experiencebuilder/experience/?id=612279fd5d23491b859302329618b457&page=Jelajah-Peta";
 
 const NAV: NavItem[] = [
-  { label: "Dataset",        href: "/dataset"      },
-  { label: "Mapset",         href: "/mapset"       },
-  { label: "Geospasial",     href: GEOSPASIAL_URL, external: true },
+  { label: "Dataset",   href: "/dataset" },
+  { label: "Geospasial", href: GEOSPASIAL_URL, external: true },
+  {
+    label: "Data Aceh Terpadu",
+    children: [
+      { label: "Perangkat Aceh", href: "/data-terpadu/perangkat-aceh" },
+      { label: "Bidang Urusan",  href: "/data-terpadu/bidang-urusan"  },
+    ],
+  },
   {
     label: "Pemanfaatan Data",
     children: [
-      { label: "Dashboard",               href: "/pemanfaatan/dashboard"              },
-      { label: "Infografik",              href: "/pemanfaatan/infografik"             },
-      { label: "Videografik",             href: "/pemanfaatan/videografik"            },
-      { label: "Artikel",                 href: "/pemanfaatan/artikel"                },
-      { label: "Publikasi",               href: "/pemanfaatan/publikasi"              },
-      { label: "Dokumentasi Geospasial",  href: "/pemanfaatan/dokumentasi-geospasial" },
+      { label: "Dashboard",              href: "/pemanfaatan/dashboard"               },
+      { label: "Infografik",             href: "/pemanfaatan/infografik"              },
+      { label: "Videografik",            href: "/pemanfaatan/videografik"             },
+      { label: "Artikel",                href: "/pemanfaatan/artikel"                 },
+      { label: "Publikasi",              href: "/pemanfaatan/publikasi"               },
+      { label: "Dokumentasi Geospasial", href: "/pemanfaatan/dokumentasi-geospasial"  },
     ],
   },
-  { label: "Instansi",       href: "/instansi"     },
-  { label: "Group",          href: "/group"        },
-  { label: "Bidang Urusan",  href: "/bidang-urusan"},
-  { label: "Ekosistem",      href: "/ekosistem"    },
-  { label: "Rilis",          href: "/rilis"        },
-  { label: "Tentang",        href: "/tentang"      },
+  { label: "Instansi", href: "/instansi" },
+  { label: "Group",    href: "/group"    },
+  {
+    label: "Ekosistem",
+    children: [
+      { label: "Kabupaten/Kota", href: "/ekosistem/kabupaten-kota" },
+      { label: "Gampong",        href: "/ekosistem/gampong"        },
+    ],
+  },
+  { label: "Rilis",   href: "/rilis"   },
+  { label: "Tentang", href: "/tentang" },
 ];
 
 // ─── Desktop: plain nav link (internal or external) ──────────────────────────
@@ -432,7 +445,7 @@ export function Navbar() {
               <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/20 ring-1 ring-amber-500/40">
                 <Database className="h-3.5 w-3.5 text-amber-300" />
               </span>
-              <span className="hidden text-sm font-semibold tracking-tight text-white xl:block">
+              <span className="text-sm font-semibold tracking-tight text-white sm:block">
                 Satu Data{" "}
                 <span style={{
                   background: "linear-gradient(90deg,#F59E0B 0%,#FDE68A 50%,#F59E0B 100%)",
@@ -487,7 +500,7 @@ export function Navbar() {
                 )}
               >
                 <LogIn className="h-3.5 w-3.5" />
-                <span className="hidden xl:inline">Masuk</span>
+                <span className="hidden lg:inline">Masuk</span>
               </Link>
             </motion.div>
 
